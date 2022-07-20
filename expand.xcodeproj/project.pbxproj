@@ -14,6 +14,7 @@
 		357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2432887D3B800666EB6 /* Assets.xcassets */; };
 		357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2452887D3B800666EB6 /* LaunchScreen.storyboard */; };
 		357DE24F2887EDEF00666EB6 /* ExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE24E2887EDEF00666EB6 /* ExpandView.swift */; };
+		65CF482528882F5D00DDED85 /* ExpandView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CF482428882F5D00DDED85 /* ExpandView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		357DE2462887D3B800666EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357DE2482887D3B800666EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		357DE24E2887EDEF00666EB6 /* ExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandView.swift; sourceTree = "<group>"; };
+		65CF482428882F5D00DDED85 /* ExpandView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 		357DE2392887D3B600666EB6 /* expand */ = {
 			isa = PBXGroup;
 			children = (
-				357DE24E2887EDEF00666EB6 /* ExpandView.swift */,
+				65CF482328882F4600DDED85 /* views */,
 				357DE23A2887D3B600666EB6 /* AppDelegate.swift */,
 				357DE23C2887D3B600666EB6 /* SceneDelegate.swift */,
 				357DE23E2887D3B600666EB6 /* ViewController.swift */,
@@ -68,6 +70,15 @@
 				357DE2482887D3B800666EB6 /* Info.plist */,
 			);
 			path = expand;
+			sourceTree = "<group>";
+		};
+		65CF482328882F4600DDED85 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				357DE24E2887EDEF00666EB6 /* ExpandView.swift */,
+				65CF482428882F5D00DDED85 /* ExpandView.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +141,7 @@
 			files = (
 				357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */,
 				357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */,
+				65CF482528882F5D00DDED85 /* ExpandView.xib in Resources */,
 				357DE2422887D3B600666EB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +319,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +346,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
