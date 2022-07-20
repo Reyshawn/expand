@@ -19,8 +19,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjT-hN-5yb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="E2m-Xc-hzu" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="415" height="1010"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E2m-Xc-hzu" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="415" height="930"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofk-cF-Ilf">
                                                 <rect key="frame" x="0.0" y="0.0" width="415" height="100"/>
@@ -30,55 +30,55 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lk-E8-RHm">
-                                                <rect key="frame" x="0.0" y="120" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="110" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="ZEC-p5-G1x"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WgD-Uq-D1o" customClass="ExpandView" customModule="expand" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="240" width="415" height="50"/>
+                                                <rect key="frame" x="0.0" y="220" width="415" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="fg3-WL-Lkm"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ste-cc-nsQ">
-                                                <rect key="frame" x="0.0" y="310" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="280" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="8Jz-gh-4jD"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0j-mi-PrG">
-                                                <rect key="frame" x="0.0" y="430" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="390" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="l9t-ER-aHy"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7oZ-5d-l5m">
-                                                <rect key="frame" x="0.0" y="550" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="500" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="eOb-ph-XZY"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBA-9H-nQh">
-                                                <rect key="frame" x="0.0" y="670" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="610" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="TOp-iR-S2c"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7T-FZ-TEi">
-                                                <rect key="frame" x="0.0" y="790" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="720" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="pZg-Sn-GbS"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Vu-pZ-hzD">
-                                                <rect key="frame" x="0.0" y="910" width="415" height="100"/>
+                                                <rect key="frame" x="0.0" y="830" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="ZE4-7H-ppO"/>

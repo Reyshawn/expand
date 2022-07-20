@@ -8,6 +8,7 @@
 import UIKit
 
 class ExpandView: UIView {
+  @IBOutlet var imageView: UIImageView!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -29,6 +30,10 @@ class ExpandView: UIView {
     self.layer.shadowColor = UIColor.black.cgColor
     
     loadNib()
+    
+    imageView.image = UIImage(named: "westworld")
+    imageView.isHidden = true
+    imageView.transform = CGAffineTransform(translationX: -200, y: 0)
   }
   
   func loadNib() {
@@ -43,4 +48,25 @@ class ExpandView: UIView {
       xib.trailingAnchor.constraint(equalTo: self.trailingAnchor)
     ])
   }
+  
+  public func showImage(_ duration: CFTimeInterval) {
+    imageView.isHidden = false
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
+      self?.imageView.transform = CGAffineTransform(translationX: 0, y: 0)
+    } completion: { _ in
+    }
+  }
+  
+  public func hideImage(_ duration: CFTimeInterval) {
+    imageView.isHidden = false
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
+      self?.imageView.transform = CGAffineTransform(translationX: -200, y: 0)
+    } completion: { [weak self] _ in
+      self?.imageView.isHidden = true
+    }
+    
+    
+  }
+  
+  
 }

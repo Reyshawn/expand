@@ -26,8 +26,17 @@ class ViewController: UIViewController {
   @objc func onTap() {
     let duration: CFTimeInterval = 0.4
     
+    let willOpen = self.expandViewWidthConstraint.constant == 50
+    
+    if (willOpen) {
+      expandView.showImage(duration)
+    } else {
+      expandView.hideImage(duration)
+    }
+    
+    
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
-      self?.expandViewWidthConstraint.constant = self?.expandViewWidthConstraint.constant == 50 ? 200 : 50
+      self?.expandViewWidthConstraint.constant = willOpen ? 200 : 50
       self?.view.layoutIfNeeded()
     } completion: { _ in
     }
@@ -35,11 +44,11 @@ class ViewController: UIViewController {
     CATransaction.begin()
     let animation = CABasicAnimation(keyPath: "shadowOpacity")
     animation.fromValue = self.expandView.layer.shadowOpacity
-    animation.toValue = self.expandView.layer.shadowOpacity == 0 ? 0.5 : 0
+    animation.toValue = willOpen ? 0.5 : 0
     animation.duration = duration
     self.expandView.layer.add(animation, forKey: animation.keyPath)
     CATransaction.setCompletionBlock { [weak self] in
-      self?.expandView.layer.shadowOpacity = self?.expandView.layer.shadowOpacity == 0 ? 0.5 : 0
+      self?.expandView.layer.shadowOpacity = willOpen ? 0.5 : 0
     }
     
     CATransaction.commit()
