@@ -8,8 +8,9 @@
 import UIKit
 
 class ExpandView: UIView {
-  @IBOutlet var imageView: UIImageView!
-  
+  @IBOutlet var imageView: UIImageView!  
+  @IBOutlet var labelLeadingConstraint: NSLayoutConstraint!
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -53,6 +54,8 @@ class ExpandView: UIView {
     imageView.isHidden = false
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
       self?.imageView.transform = CGAffineTransform(translationX: 0, y: 0)
+      self?.labelLeadingConstraint.constant = 140
+      self?.layoutIfNeeded()
     } completion: { _ in
     }
   }
@@ -61,11 +64,11 @@ class ExpandView: UIView {
     imageView.isHidden = false
     UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
       self?.imageView.transform = CGAffineTransform(translationX: -200, y: 0)
+      self?.labelLeadingConstraint.constant = 10
+      self?.layoutIfNeeded()
     } completion: { [weak self] _ in
       self?.imageView.isHidden = true
     }
-    
-    
   }
   
   
