@@ -36,7 +36,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="ZEC-p5-G1x"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WgD-Uq-D1o">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WgD-Uq-D1o" customClass="ExpandView" customModule="expand" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="280" width="415" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemMintColor"/>
                                                 <constraints>
@@ -108,6 +108,10 @@
                             <constraint firstItem="wjT-hN-5yb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kx2-Fy-KQg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="expandView" destination="WgD-Uq-D1o" id="geN-W3-BNc"/>
+                        <outlet property="expandViewWidthConstraint" destination="fg3-WL-Lkm" id="QdC-pU-EGb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
