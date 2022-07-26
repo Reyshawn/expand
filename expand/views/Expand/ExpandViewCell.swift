@@ -1,14 +1,14 @@
 //
-//  ExpandView.swift
+//  ExpandViewCell.swift
 //  expand
 //
-//  Created by reshawn on 2022/7/20.
+//  Created by Reyshawn Chang on 2022/7/26.
 //
 
 import UIKit
 
-class ExpandView: UIView {
-  @IBOutlet var imageView: UIImageView!  
+class ExpandViewCell: UIView {
+  @IBOutlet var imageView: UIImageView!
   @IBOutlet var labelLeadingConstraint: NSLayoutConstraint!
 
   override init(frame: CGRect) {
@@ -38,7 +38,7 @@ class ExpandView: UIView {
   }
   
   func loadNib() {
-    let xib = Bundle.main.loadNibNamed("ExpandView", owner: self)?.first as! UIView
+    let xib = Bundle.main.loadNibNamed("ExpandViewCell", owner: self)?.first as! UIView
     addSubview(xib)
     
     xib.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +70,4 @@ class ExpandView: UIView {
       self?.imageView.isHidden = true
     }
   }
-  
-  
 }

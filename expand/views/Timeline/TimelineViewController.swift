@@ -11,62 +11,77 @@ class TimelineViewController: UIViewController {
   
   lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewCompositionalLayout { index, _ in
-      let supplementaryViews = [
-        NSCollectionLayoutBoundarySupplementaryItem(
-          layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)),
-          elementKind: UICollectionView.elementKindSectionHeader,
-          alignment: .top)
-      ]
       
-      switch index {
-        case 1:
-          let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-              widthDimension: .fractionalWidth(1.0),
-              heightDimension: .fractionalHeight(1.0)
-            )
-          )
-          
-          item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-          
-          let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalWidth(0.7 / 1.5)),
-            subitems: [item]
-          )
-          
-          let section = NSCollectionLayoutSection(group: group)
-          section.orthogonalScrollingBehavior = .continuous
-          
-          section.boundarySupplementaryItems = supplementaryViews
-          
-          return section
-        default:
-          let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-              widthDimension: .fractionalWidth(1.0),
-              heightDimension: .fractionalHeight(1.0)
-            )
-          )
-          
-          item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-          
-          let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalWidth(0.4 * 1.5)),
-            subitems: [item]
-          )
-          
-          let section = NSCollectionLayoutSection(group: group)
-          section.orthogonalScrollingBehavior = .continuous
-          
-          section.boundarySupplementaryItems = supplementaryViews
-          
-          return section
-      }
+      let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1 / 3))
+      let item = NSCollectionLayoutItem(layoutSize: size)
+      item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+      
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30))
+      
+      let group = NSCollectionLayoutGroup.vertical(layoutSize: size, subitem: item, count: 3)
+      let section = NSCollectionLayoutSection(group: group)
+      
+      section.interGroupSpacing = 100
+      
+      return section
+      // let supplementaryViews = [
+      //   NSCollectionLayoutBoundarySupplementaryItem(
+      //     layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)),
+      //     elementKind: UICollectionView.elementKindSectionHeader,
+      //     alignment: .top)
+      // ]
+      //
+      // switch index {
+      //   case 1:
+      //     let item = NSCollectionLayoutItem(
+      //       layoutSize: NSCollectionLayoutSize(
+      //         widthDimension: .fractionalWidth(1.0),
+      //         heightDimension: .fractionalHeight(1.0)
+      //       )
+      //     )
+      //
+      //     item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+      //
+      //     let group = NSCollectionLayoutGroup.horizontal(
+      //       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalWidth(0.7 / 1.5)),
+      //       subitems: [item]
+      //     )
+      //
+      //     let section = NSCollectionLayoutSection(group: group)
+      //     section.orthogonalScrollingBehavior = .continuous
+      //
+      //     section.boundarySupplementaryItems = supplementaryViews
+      //
+      //     return section
+      //   default:
+      //     let item = NSCollectionLayoutItem(
+      //       layoutSize: NSCollectionLayoutSize(
+      //         widthDimension: .fractionalWidth(1.0),
+      //         heightDimension: .fractionalHeight(1.0)
+      //       )
+      //     )
+      //
+      //     item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+      //
+      //     let group = NSCollectionLayoutGroup.horizontal(
+      //       layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalWidth(0.4 * 1.5)),
+      //       subitems: [item]
+      //     )
+      //
+      //     let section = NSCollectionLayoutSection(group: group)
+      //     section.orthogonalScrollingBehavior = .continuous
+      //
+      //     section.boundarySupplementaryItems = supplementaryViews
+      //
+      //     return section
+      // }
     }
     
     let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
     return view
   }()
+  
+  var collectionViewSections: Int = 3
   
   
   override func viewDidLoad() {
@@ -92,13 +107,18 @@ class TimelineViewController: UIViewController {
 
 
 extension TimelineViewController: UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if indexPath.section == 0 && indexPath.row == 0 {
+      collectionViewSections += 1
+      collectionView.reloadData()
+    }
+  }
 }
 
 
 extension TimelineViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    3
+    return collectionViewSections
   }
   
   
@@ -109,7 +129,7 @@ extension TimelineViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.contentView.backgroundColor = .blue
+    cell.contentView.backgroundColor = .cyan
     
     return cell
   }

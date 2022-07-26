@@ -9,33 +9,31 @@
 /* Begin PBXBuildFile section */
 		357DE23B2887D3B600666EB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE23A2887D3B600666EB6 /* AppDelegate.swift */; };
 		357DE23D2887D3B600666EB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE23C2887D3B600666EB6 /* SceneDelegate.swift */; };
-		357DE23F2887D3B600666EB6 /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE23E2887D3B600666EB6 /* ExpandViewController.swift */; };
 		357DE2422887D3B600666EB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2402887D3B600666EB6 /* Main.storyboard */; };
 		357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2432887D3B800666EB6 /* Assets.xcassets */; };
 		357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2452887D3B800666EB6 /* LaunchScreen.storyboard */; };
-		357DE24F2887EDEF00666EB6 /* ExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE24E2887EDEF00666EB6 /* ExpandView.swift */; };
 		655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655DFC75288C3B9F0039426B /* TimelineViewController.swift */; };
-		655DFC78288C3BBF0039426B /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655DFC77288C3BBF0039426B /* Timeline.storyboard */; };
 		65B5AF0228902258007F32DD /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0128902258007F32DD /* OutlineViewController.swift */; };
-		65B5AF0428902CB7007F32DD /* Expand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B5AF0328902CB7007F32DD /* Expand.storyboard */; };
-		65CF482528882F5D00DDED85 /* ExpandView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CF482428882F5D00DDED85 /* ExpandView.xib */; };
+		65B5AF0928903380007F32DD /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0828903380007F32DD /* ExpandViewController.swift */; };
+		65B5AF0D289036EB007F32DD /* ExpandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0C289036EB007F32DD /* ExpandViewCell.swift */; };
+		65B5AF0F28903772007F32DD /* ExpandViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B5AF0E28903772007F32DD /* ExpandViewCell.xib */; };
+		65B5AF11289037FC007F32DD /* ExpandView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B5AF10289037FC007F32DD /* ExpandView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		357DE2372887D3B600666EB6 /* expand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = expand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		357DE23A2887D3B600666EB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		357DE23C2887D3B600666EB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		357DE23E2887D3B600666EB6 /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
 		357DE2412887D3B600666EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		357DE2432887D3B800666EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		357DE2462887D3B800666EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357DE2482887D3B800666EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		357DE24E2887EDEF00666EB6 /* ExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandView.swift; sourceTree = "<group>"; };
 		655DFC75288C3B9F0039426B /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
-		655DFC77288C3BBF0039426B /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		65B5AF0128902258007F32DD /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
-		65B5AF0328902CB7007F32DD /* Expand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Expand.storyboard; sourceTree = "<group>"; };
-		65CF482428882F5D00DDED85 /* ExpandView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandView.xib; sourceTree = "<group>"; };
+		65B5AF0828903380007F32DD /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
+		65B5AF0C289036EB007F32DD /* ExpandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewCell.swift; sourceTree = "<group>"; };
+		65B5AF0E28903772007F32DD /* ExpandViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandViewCell.xib; sourceTree = "<group>"; };
+		65B5AF10289037FC007F32DD /* ExpandView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,18 +82,17 @@
 			isa = PBXGroup;
 			children = (
 				655DFC75288C3B9F0039426B /* TimelineViewController.swift */,
-				655DFC77288C3BBF0039426B /* Timeline.storyboard */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
 		};
-		65B482BA288C36D80081312E /* Expand */ = {
+		65B5AF072890336E007F32DD /* Expand */ = {
 			isa = PBXGroup;
 			children = (
-				357DE23E2887D3B600666EB6 /* ExpandViewController.swift */,
-				357DE24E2887EDEF00666EB6 /* ExpandView.swift */,
-				65CF482428882F5D00DDED85 /* ExpandView.xib */,
-				65B5AF0328902CB7007F32DD /* Expand.storyboard */,
+				65B5AF0828903380007F32DD /* ExpandViewController.swift */,
+				65B5AF10289037FC007F32DD /* ExpandView.xib */,
+				65B5AF0C289036EB007F32DD /* ExpandViewCell.swift */,
+				65B5AF0E28903772007F32DD /* ExpandViewCell.xib */,
 			);
 			path = Expand;
 			sourceTree = "<group>";
@@ -103,8 +100,8 @@
 		65CF482328882F4600DDED85 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				65B5AF072890336E007F32DD /* Expand */,
 				655DFC74288C3B890039426B /* Timeline */,
-				65B482BA288C36D80081312E /* Expand */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -168,10 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */,
+				65B5AF11289037FC007F32DD /* ExpandView.xib in Resources */,
 				357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */,
-				655DFC78288C3BBF0039426B /* Timeline.storyboard in Resources */,
-				65CF482528882F5D00DDED85 /* ExpandView.xib in Resources */,
-				65B5AF0428902CB7007F32DD /* Expand.storyboard in Resources */,
+				65B5AF0F28903772007F32DD /* ExpandViewCell.xib in Resources */,
 				357DE2422887D3B600666EB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,11 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357DE23F2887D3B600666EB6 /* ExpandViewController.swift in Sources */,
+				65B5AF0D289036EB007F32DD /* ExpandViewCell.swift in Sources */,
 				357DE23B2887D3B600666EB6 /* AppDelegate.swift in Sources */,
-				357DE24F2887EDEF00666EB6 /* ExpandView.swift in Sources */,
 				357DE23D2887D3B600666EB6 /* SceneDelegate.swift in Sources */,
 				65B5AF0228902258007F32DD /* OutlineViewController.swift in Sources */,
+				65B5AF0928903380007F32DD /* ExpandViewController.swift in Sources */,
 				655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
