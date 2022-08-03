@@ -8,8 +8,10 @@
 import UIKit
 
 class TimelineViewController: UIViewController {
-  
-  var expandAnimation: ExpandAnimation? = nil
+   
+  lazy var expandAnimation: ExpandAnimation = {
+    ExpandAnimation(parent: self.view)
+  }()
   
   enum Section {
     case main
@@ -128,9 +130,13 @@ extension TimelineViewController: UICollectionViewDelegate {
     
     let item = dataSource.itemIdentifier(for: indexPath)!
     
-    let textCell = TextCell(frame: cell.frame)
-    textCell.configure(item.title, isExpanded: false)
-    expandAnimation = ExpandAnimation(parent: self.view, tapped: cell, expand: textCell)
-   
+    let converted = collectionView.convert(cell.frame, to: expandAnimation.parent)
+    
+    expandAnimation.expand(converted) { size in
+      let v = TextCell(frame: size)
+      v.configure(item.title, isExpanded: false)
+      return v
+    }
+    
   }
 }
