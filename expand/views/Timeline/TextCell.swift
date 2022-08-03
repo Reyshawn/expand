@@ -11,6 +11,13 @@ class TextCell: UICollectionViewCell {
   let label = UILabel()
   static let reuseIdentifier = "text-cell-reuse-identifier"
   
+
+  lazy var expandViewCellHeightConstraint: NSLayoutConstraint = {
+    var constraint = contentView.heightAnchor.constraint(equalToConstant: 44)
+    constraint.priority = .defaultHigh
+    return constraint
+  }()
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
@@ -18,7 +25,6 @@ class TextCell: UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("not implemnted")
   }
-  
 }
 
 extension TextCell {
@@ -26,13 +32,23 @@ extension TextCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.adjustsFontForContentSizeCategory = true
     contentView.addSubview(label)
-    label.font = UIFont.preferredFont(forTextStyle: .caption1)
+    label.font = UIFont.preferredFont(forTextStyle: .body)
     let inset = CGFloat(10)
+    
     NSLayoutConstraint.activate([
       label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
       label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
       label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
       label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
     ])
+    
+    expandViewCellHeightConstraint.isActive = true
+  }
+  
+  func configure(_ text: String, isExpanded: Bool) {
+    label.text = text
+  
+    expandViewCellHeightConstraint.constant = isExpanded ? 100 : 44
+    label.numberOfLines = isExpanded ? 0 : 1
   }
 }

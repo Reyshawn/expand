@@ -13,7 +13,48 @@ class TimelineViewController: UIViewController {
     case main
   }
   
-  var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
+  class TimelineItem: Hashable {
+    private let id = UUID()
+    let title: String
+    let subitems: [TimelineItem]
+    var isExpanded: Bool = false
+    
+    init(title: String, subitems:[TimelineItem] = []) {
+      self.title = title
+      self.subitems = subitems
+    }
+    
+    static func == (lhs: TimelineViewController.TimelineItem, rhs: TimelineViewController.TimelineItem) -> Bool {
+      return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(self.id)
+    }
+  }
+  
+  private lazy var items:[TimelineItem] = {
+    return [
+      TimelineItem(title: "2022", subitems: [
+        TimelineItem(title: "Jul.", subitems: [
+          TimelineItem(title: "17th 西部世界：第四季 适应还是死亡 第 4 集"),
+          TimelineItem(title: "24th 西部世界：第四季 适应还是死亡 第 5 集"),
+          TimelineItem(title: "31st 西部世界：第四季 适应还是死亡 第 6 集 ****")
+        ]),
+        TimelineItem(title: "Aug.", subitems: [
+          TimelineItem(title: "7th 西部世界：第四季 适应还是死亡 第 7 集"),
+          TimelineItem(title: "14th 西部世界：第四季 适应还是死亡 第 8 集")
+        ]),
+        TimelineItem(title: "Nov.", subitems: [
+          TimelineItem(title: "11th 铃芽户缔 すずめの戸締まり")
+        ])
+      ]),
+      TimelineItem(title: "2023", subitems: [
+      ])
+    ]
+  }()
+  
+  var dataSource: UICollectionViewDiffableDataSource<Section, TimelineItem>! = nil
   var collectionView: UICollectionView! = nil
   
   
@@ -29,36 +70,8 @@ class TimelineViewController: UIViewController {
 
 extension TimelineViewController {
   private func createLayout() -> UICollectionViewLayout {
-    let layout = UICollectionViewCompositionalLayout {
-      (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-      let leadingItem = NSCollectionLayoutItem(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(0.7),
-          heightDimension: .fractionalHeight(1.0)))
-      
-      leadingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-      
-      let trailingItem = NSCollectionLayoutItem(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0),
-          heightDimension: .fractionalHeight(0.3)))
-      
-      trailingItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-      
-      let trailingGroup = NSCollectionLayoutGroup.vertical(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1.0)),
-        subitem: trailingItem, count: 2)
-      
-      let nestedGroup = NSCollectionLayoutGroup.horizontal(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.4)),
-        subitems: [leadingItem, trailingGroup])
-      
-      let section = NSCollectionLayoutSection(group: nestedGroup)
-      
-      return section
-    }
+    let listConfiguration = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
+    let layout = UICollectionViewCompositionalLayout.list(using: listConfiguration)
     
     return layout
   }
@@ -74,32 +87,48 @@ extension TimelineViewController {
   }
   
   private func configureDataSource() {
-    let cellRegistration = UICollectionView.CellRegistration<TextCell, Int> { (cell, indexPath, itemIdentifier) in
-      cell.label.text = "\(indexPath.section), \(indexPath.item)"
-      cell.contentView.backgroundColor = .cyan
-      cell.contentView.layer.borderColor = UIColor.black.cgColor
-      cell.contentView.layer.borderWidth = 1
-      cell.contentView.layer.cornerRadius = 8
-      cell.label.textAlignment = .center
-      cell.label.font = UIFont.preferredFont(forTextStyle: .title1)
+    let cellRegistration = UICollectionView.CellRegistration<TextCell, TimelineItem> { (cell, indexPath, item) in
+      cell.configure(item.title, isExpanded: item.isExpanded)
     }
     
     dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
-      (collectionView: UICollectionView, indexPath: IndexPath, itemIdentifier: Int) -> UICollectionViewCell? in
+      (collectionView: UICollectionView, indexPath: IndexPath, item: TimelineItem) -> UICollectionViewCell? in
       
-      return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-      
+      return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
     }
     
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-    snapshot.appendSections([Section.main])
-    snapshot.appendItems(Array(0..<100))
-    dataSource.apply(snapshot, animatingDifferences: false)
+    let snapshot = initialSnapshot()
+    
+    dataSource.apply(snapshot, to: .main, animatingDifferences: false)
+  }
+  
+  
+  func initialSnapshot() -> NSDiffableDataSourceSectionSnapshot<TimelineItem> {
+    var snapshot = NSDiffableDataSourceSectionSnapshot<TimelineItem>()
+    
+    func addItems(_ items: [TimelineItem], to parent: TimelineItem?) {
+      snapshot.append(items, to: parent)
+      for item in items where !item.subitems.isEmpty {
+        addItems(item.subitems, to: parent)
+      }
+    }
+    
+    addItems(items, to: nil)
+    return snapshot
   }
 }
 
 extension TimelineViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    collectionView.deselectItem(at: indexPath, animated: true)
+    
+    
+    let item = dataSource.itemIdentifier(for: indexPath)!
+    
+
+    item.isExpanded = !item.isExpanded
+    var snapshot = dataSource.snapshot()
+    snapshot.reconfigureItems([item])
+    
+    dataSource.apply(snapshot, animatingDifferences: true)
   }
 }
