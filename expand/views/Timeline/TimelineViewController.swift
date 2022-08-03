@@ -124,10 +124,9 @@ extension TimelineViewController {
 
 extension TimelineViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let cell = dataSource.collectionView(collectionView, cellForItemAt: indexPath) as? TextCell else {
+    guard let cell = collectionView.cellForItem(at: indexPath) as? TextCell else {
       return
     }
-    
     let item = dataSource.itemIdentifier(for: indexPath)!
     
     let converted = collectionView.convert(cell.frame, to: expandAnimation.parent)
@@ -137,6 +136,5 @@ extension TimelineViewController: UICollectionViewDelegate {
       v.configure(item.title, isExpanded: false)
       return v
     }
-    
   }
 }
