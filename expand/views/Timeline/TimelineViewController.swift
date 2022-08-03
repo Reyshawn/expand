@@ -120,15 +120,115 @@ extension TimelineViewController {
 
 extension TimelineViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    guard let cell = dataSource.collectionView(collectionView, cellForItemAt: indexPath) as? TextCell else {
+      return
+    }
     
     let item = dataSource.itemIdentifier(for: indexPath)!
     
-
-    item.isExpanded = !item.isExpanded
-    var snapshot = dataSource.snapshot()
-    snapshot.reconfigureItems([item])
+    let converted = collectionView.convert(cell.frame, to: self.view)
+    let upSnapshot = self.view.resizableSnapshotView(
+      from: CGRect(
+        x: 0,
+        y: 0,
+        width: self.view.bounds.width,
+        height: converted.minY),
+      afterScreenUpdates: false, withCapInsets: .zero)!
     
-    dataSource.apply(snapshot, animatingDifferences: true)
+    let downSnapshot = self.view.resizableSnapshotView(
+      from: CGRect(
+        x: 0,
+        y: converted.maxY,
+        width: self.view.bounds.width,
+        height: (self.view.bounds.height - converted.maxY)),
+      afterScreenUpdates: false, withCapInsets: .zero)!
+  
+     
+    downSnapshot.frame = CGRect(
+      x: 0,
+      y: converted.maxY,
+      width: self.view.bounds.width,
+      height: (self.view.bounds.height - converted.maxY))
+    
+    // collectionView.isHidden = true
+    self.view.addSubview(upSnapshot)
+    self.view.addSubview(downSnapshot)
+    
+    
+    let overlay = UIView(frame: self.view.frame)
+    overlay.backgroundColor = UIColor.black
+    overlay.layer.opacity = 0
+    
+    self.view.addSubview(overlay)
+    
+    // create a TextCell
+    
+    let textCell = TextCell(frame: converted)
+    textCell.configure(item.title, isExpanded: false)
+
+    textCell.backgroundColor = UIColor.white
+    
+    textCell.layer.shadowOffset = CGSize(width: 0,
+                                      height: 5)
+    textCell.layer.shadowRadius = 10
+    textCell.layer.shadowOpacity = 0
+    textCell.layer.shadowColor = UIColor.black.cgColor
+    
+    self.view.addSubview(textCell)
+    
+    
+    upSnapshot.translatesAutoresizingMaskIntoConstraints = false
+    downSnapshot.translatesAutoresizingMaskIntoConstraints = false
+    textCell.translatesAutoresizingMaskIntoConstraints = false
+    
+    var textCellHeightConstraint = textCell.heightAnchor.constraint(equalToConstant: converted.height)
+    var textCellTopConstraint = textCell.topAnchor.constraint(equalTo: self.view.topAnchor, constant: converted.minY)
+    
+    NSLayoutConstraint.activate([
+      textCell.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+      textCell.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+      textCellHeightConstraint,
+      textCellTopConstraint,
+      
+      upSnapshot.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+      upSnapshot.bottomAnchor.constraint(equalTo: textCell.topAnchor, constant: 0),
+      upSnapshot.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+      upSnapshot.heightAnchor.constraint(equalToConstant: converted.minY)
+    ])
+    
+
+    let duration: CFTimeInterval = 0.8
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [.curveEaseInOut]) { [weak self] in
+      textCellHeightConstraint.constant = converted.height + 100
+      textCellTopConstraint.constant = converted.minY - 30
+      
+      downSnapshot.frame = CGRect(
+        x: 0,
+        y: converted.maxY + 100 - 30,
+        width: self!.view.bounds.width,
+        height: (self!.view.bounds.height - converted.maxY))
+      self?.view.layoutIfNeeded()
+    } completion: { _ in
+    }
+    
+    
+    CATransaction.begin()
+    let animation = CABasicAnimation(keyPath: "opacity")
+    animation.fromValue = 0
+    animation.toValue = 0.3
+    animation.duration = 0.4
+    
+    let shadowAnimatoin = CABasicAnimation(keyPath: "shadowOpacity")
+    shadowAnimatoin.fromValue = 0
+    shadowAnimatoin.toValue = 0.5
+    shadowAnimatoin.duration = 0.4
+    overlay.layer.add(animation, forKey: animation.keyPath)
+    textCell.layer.add(shadowAnimatoin, forKey: shadowAnimatoin.keyPath)
+    CATransaction.setCompletionBlock { [weak self] in
+      overlay.layer.opacity = 0.3
+      textCell.layer.shadowOpacity = 0.5
+    }
+    
+    CATransaction.commit()
   }
 }
