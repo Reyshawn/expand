@@ -12,7 +12,11 @@
 		357DE23D2887D3B600666EB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357DE23C2887D3B600666EB6 /* SceneDelegate.swift */; };
 		357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2432887D3B800666EB6 /* Assets.xcassets */; };
 		357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2452887D3B800666EB6 /* LaunchScreen.storyboard */; };
+		651F1ED328E1DC01004BEA67 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651F1ED228E1DC01004BEA67 /* PresentViewController.swift */; };
+		651F1ED528E1DCD9004BEA67 /* PresentFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651F1ED428E1DCD9004BEA67 /* PresentFirstViewController.swift */; };
 		655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655DFC75288C3B9F0039426B /* TimelineViewController.swift */; };
+		65956F6A28E307F1004D16CE /* ShrinkAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65956F6928E307F1004D16CE /* ShrinkAnimator.swift */; };
+		65956F6C28E30E23004D16CE /* PresentSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65956F6B28E30E23004D16CE /* PresentSecondViewController.swift */; };
 		65B5AF0228902258007F32DD /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0128902258007F32DD /* OutlineViewController.swift */; };
 		65B5AF0928903380007F32DD /* ExpandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0828903380007F32DD /* ExpandViewController.swift */; };
 		65B5AF0D289036EB007F32DD /* ExpandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B5AF0C289036EB007F32DD /* ExpandViewCell.swift */; };
@@ -29,7 +33,11 @@
 		357DE2432887D3B800666EB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		357DE2462887D3B800666EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357DE2482887D3B800666EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		651F1ED228E1DC01004BEA67 /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
+		651F1ED428E1DCD9004BEA67 /* PresentFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentFirstViewController.swift; sourceTree = "<group>"; };
 		655DFC75288C3B9F0039426B /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		65956F6928E307F1004D16CE /* ShrinkAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkAnimator.swift; sourceTree = "<group>"; };
+		65956F6B28E30E23004D16CE /* PresentSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentSecondViewController.swift; sourceTree = "<group>"; };
 		65B5AF0128902258007F32DD /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		65B5AF0828903380007F32DD /* ExpandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewController.swift; sourceTree = "<group>"; };
 		65B5AF0C289036EB007F32DD /* ExpandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +87,17 @@
 			path = expand;
 			sourceTree = "<group>";
 		};
+		651F1ED128E1DBE7004BEA67 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				651F1ED228E1DC01004BEA67 /* PresentViewController.swift */,
+				651F1ED428E1DCD9004BEA67 /* PresentFirstViewController.swift */,
+				65956F6928E307F1004D16CE /* ShrinkAnimator.swift */,
+				65956F6B28E30E23004D16CE /* PresentSecondViewController.swift */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
 		655DFC74288C3B890039426B /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +122,7 @@
 		65CF482328882F4600DDED85 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				651F1ED128E1DBE7004BEA67 /* Present */,
 				65B5AF072890336E007F32DD /* Expand */,
 				655DFC74288C3B890039426B /* Timeline */,
 			);
@@ -181,13 +201,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65956F6C28E30E23004D16CE /* PresentSecondViewController.swift in Sources */,
 				3536724C289A6E1E00764E63 /* ExpandAnimation.swift in Sources */,
 				65B5AF0D289036EB007F32DD /* ExpandViewCell.swift in Sources */,
 				357DE23B2887D3B600666EB6 /* AppDelegate.swift in Sources */,
 				357DE23D2887D3B600666EB6 /* SceneDelegate.swift in Sources */,
 				65B5AF152891757D007F32DD /* TextCell.swift in Sources */,
+				651F1ED328E1DC01004BEA67 /* PresentViewController.swift in Sources */,
+				65956F6A28E307F1004D16CE /* ShrinkAnimator.swift in Sources */,
 				65B5AF0228902258007F32DD /* OutlineViewController.swift in Sources */,
 				65B5AF0928903380007F32DD /* ExpandViewController.swift in Sources */,
+				651F1ED528E1DCD9004BEA67 /* PresentFirstViewController.swift in Sources */,
 				655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

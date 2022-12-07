@@ -48,7 +48,8 @@ class OutlineViewController: UIViewController {
   private lazy var menuItems: [OutlineItem] = {
     return [
       OutlineItem(title: "Expand", viewController: ExpandViewController.self),
-      OutlineItem(title: "Timeline", viewController: TimelineViewController.self)
+      OutlineItem(title: "Timeline", viewController: TimelineViewController.self),
+      OutlineItem(title: "Present", viewController: PresentViewController.self)
     ]
   }()
 }
