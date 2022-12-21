@@ -8,7 +8,6 @@
 import UIKit
 
 class PresentSecondViewController: UIViewController {
-  
   private let testLabel: UILabel = {
     let v = UILabel()
     
@@ -29,15 +28,12 @@ class PresentSecondViewController: UIViewController {
     self.view.addSubview(testLabel)
     testLabel.frame = CGRect(x: 100, y: 100, width: testLabel.frame.width, height: testLabel.frame.height)
     
-    
     let tap = UITapGestureRecognizer(target: self, action: #selector(onTest))
     
     testLabel.addGestureRecognizer(tap)
   }
   
   @objc func onTest() {
-    print("test start::::123")
-    
     dismiss(animated: true)
   }
   

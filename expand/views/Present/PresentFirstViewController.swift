@@ -80,7 +80,8 @@ class PresentFirstViewController: UIViewController {
 
 extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    shrinkAnimator = ShrinkAnimator()
+    let interactionController = ShrinkInteractionController(vc: presented)
+    shrinkAnimator = ShrinkAnimator(interactionController: interactionController)
     return shrinkAnimator
   }
   
@@ -88,5 +89,15 @@ extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
     shrinkAnimator?.forDismissed = true
     
     return shrinkAnimator
+  }
+  
+  func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    guard let animator = animator as? ShrinkAnimator,
+          let interactionController = animator.interactionController,
+          interactionController.interactionInProgress
+    else {
+      return nil
+    }
+    return interactionController
   }
 }
