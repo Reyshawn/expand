@@ -27,6 +27,8 @@ class ShrinkAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let fromView = transitionContext.view(forKey: .from)!
     let toView = transitionContext.view(forKey: .to)!
 
+    toView.frame = CGRect(x: 0, y: fromView.frame.height / 2, width: fromView.frame.width, height: fromView.frame.height / 2)
+    toView.transform = .init(translationX: 0, y: fromView.frame.height / 2)
     if forDismissed {
       UIView.animate(withDuration: Self.duration, delay: 0.0, options: [.curveEaseIn], animations: {
         toView.transform = .identity
@@ -44,7 +46,7 @@ class ShrinkAnimator: NSObject, UIViewControllerAnimatedTransitioning {
       UIView.animate(withDuration: Self.duration, delay: 0.0, options: [.curveEaseOut], animations: {
         fromView.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
         fromView.layer.cornerRadius = 12
-        toView.transform = CGAffineTransform.init(translationX: 0, y: 70)
+        toView.transform = .identity
       }, completion: { _ in
         transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
 

@@ -39,8 +39,8 @@ class PresentViewController: UIViewController {
     
     let vc = PresentFirstViewController()
     vc.modalPresentationStyle = .fullScreen
-    
-    present(vc, animated: true)
+    // vc.transitioningDelegate = self
+    present(vc, animated: false)
   }
-  
 }
+

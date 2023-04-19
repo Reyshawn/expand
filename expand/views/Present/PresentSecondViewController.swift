@@ -19,11 +19,17 @@ class PresentSecondViewController: UIViewController {
     v.layer.borderWidth = 1
     return v
   }()
+  
+  override func loadView() {
+    view = UIView()
+    self.view.backgroundColor = .yellow
+    
+  }
 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .cyan
+    
     
     self.view.addSubview(testLabel)
     testLabel.frame = CGRect(x: 100, y: 100, width: testLabel.frame.width, height: testLabel.frame.height)

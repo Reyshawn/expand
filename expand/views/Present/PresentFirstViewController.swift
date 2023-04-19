@@ -41,7 +41,7 @@ class PresentFirstViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = .white
+    self.view.backgroundColor = .cyan
     
     self.view.addSubview(testLabel)
     self.view.addSubview(dismissLabel)
@@ -61,7 +61,7 @@ class PresentFirstViewController: UIViewController {
   @objc func onTest () {
     let vc = PresentSecondViewController()
     
-    vc.modalPresentationStyle = .fullScreen
+    vc.modalPresentationStyle = .custom
     vc.transitioningDelegate = self
     present(vc, animated: true)
   }
@@ -78,26 +78,38 @@ class PresentFirstViewController: UIViewController {
 
 // Transitioning
 
+// extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
+//   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//     let interactionController = ShrinkInteractionController(vc: presented)
+//     shrinkAnimator = ShrinkAnimator(interactionController: interactionController)
+//     return shrinkAnimator
+//   }
+// 
+//   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//     shrinkAnimator?.forDismissed = true
+// 
+//     return shrinkAnimator
+//   }
+// 
+//   func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//     guard let animator = animator as? ShrinkAnimator,
+//           let interactionController = animator.interactionController,
+//           interactionController.interactionInProgress
+//     else {
+//       return nil
+//     }
+//     return interactionController
+//   }
+// }
+
+
+
 extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
-  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let interactionController = ShrinkInteractionController(vc: presented)
-    shrinkAnimator = ShrinkAnimator(interactionController: interactionController)
-    return shrinkAnimator
-  }
-  
-  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    shrinkAnimator?.forDismissed = true
+  func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
     
-    return shrinkAnimator
-  }
-  
-  func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-    guard let animator = animator as? ShrinkAnimator,
-          let interactionController = animator.interactionController,
-          interactionController.interactionInProgress
-    else {
-      return nil
-    }
-    return interactionController
+    
+    let screenSize = self.view.window?.screen.bounds.size ?? .zero
+    print("screenSize:::123123", screenSize)
+    return PageSheetPresentationController(initialSize: screenSize, presented: presented, presenting: presenting)
   }
 }

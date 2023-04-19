@@ -13,6 +13,7 @@
 		357DE2442887D3B800666EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2432887D3B800666EB6 /* Assets.xcassets */; };
 		357DE2472887D3B800666EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357DE2452887D3B800666EB6 /* LaunchScreen.storyboard */; };
 		35B8DAAA2952E0FB00940595 /* ShrinkInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8DAA92952E0FB00940595 /* ShrinkInteractionController.swift */; };
+		65115B6529F0463700EF6B72 /* PageSheetPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65115B6429F0463700EF6B72 /* PageSheetPresentationController.swift */; };
 		651F1ED328E1DC01004BEA67 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651F1ED228E1DC01004BEA67 /* PresentViewController.swift */; };
 		651F1ED528E1DCD9004BEA67 /* PresentFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651F1ED428E1DCD9004BEA67 /* PresentFirstViewController.swift */; };
 		655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655DFC75288C3B9F0039426B /* TimelineViewController.swift */; };
@@ -35,6 +36,7 @@
 		357DE2462887D3B800666EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357DE2482887D3B800666EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35B8DAA92952E0FB00940595 /* ShrinkInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkInteractionController.swift; sourceTree = "<group>"; };
+		65115B6429F0463700EF6B72 /* PageSheetPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSheetPresentationController.swift; sourceTree = "<group>"; };
 		651F1ED228E1DC01004BEA67 /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
 		651F1ED428E1DCD9004BEA67 /* PresentFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentFirstViewController.swift; sourceTree = "<group>"; };
 		655DFC75288C3B9F0039426B /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				65956F6928E307F1004D16CE /* ShrinkAnimator.swift */,
 				65956F6B28E30E23004D16CE /* PresentSecondViewController.swift */,
 				35B8DAA92952E0FB00940595 /* ShrinkInteractionController.swift */,
+				65115B6429F0463700EF6B72 /* PageSheetPresentationController.swift */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				65B5AF0228902258007F32DD /* OutlineViewController.swift in Sources */,
 				65B5AF0928903380007F32DD /* ExpandViewController.swift in Sources */,
 				651F1ED528E1DCD9004BEA67 /* PresentFirstViewController.swift in Sources */,
+				65115B6529F0463700EF6B72 /* PageSheetPresentationController.swift in Sources */,
 				655DFC76288C3B9F0039426B /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
