@@ -46,4 +46,9 @@ class PresentSecondViewController: UIViewController {
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
+  
+  
+  deinit {
+    print("deallocate present second")
+  }
 }

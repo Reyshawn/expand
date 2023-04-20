@@ -24,11 +24,10 @@ class ShrinkAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     // let fromView = presenting.view!
     let containerView = transitionContext.containerView
-    let fromView = transitionContext.view(forKey: .from)!
-    let toView = transitionContext.view(forKey: .to)!
+    let fromView = transitionContext.viewController(forKey: .from)!.view!
+    let toView = transitionContext.viewController(forKey: .to)!.view!
 
-    toView.frame = CGRect(x: 0, y: fromView.frame.height / 2, width: fromView.frame.width, height: fromView.frame.height / 2)
-    toView.transform = .init(translationX: 0, y: fromView.frame.height / 2)
+    
     if forDismissed {
       UIView.animate(withDuration: Self.duration, delay: 0.0, options: [.curveEaseIn], animations: {
         toView.transform = .identity
@@ -40,7 +39,11 @@ class ShrinkAnimator: NSObject, UIViewControllerAnimatedTransitioning {
       })
 
     } else {
-      toView.transform = CGAffineTransform.init(translationX: 0, y: toView.bounds.height)
+      
+      toView.frame = CGRect(x: 0, y: fromView.frame.height / 2, width: fromView.frame.width, height: fromView.frame.height / 2)
+      toView.transform = .init(translationX: 0, y: fromView.frame.height / 2)
+      
+      // toView.transform = CGAffineTransform.init(translationX: 0, y: toView.bounds.height)
       toView.layer.cornerRadius = 12
         
       UIView.animate(withDuration: Self.duration, delay: 0.0, options: [.curveEaseOut], animations: {
@@ -51,10 +54,10 @@ class ShrinkAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
 
         // preserve the fromView
-        containerView.insertSubview(fromView, belowSubview: toView)
+        // containerView.insertSubview(fromView, belowSubview: toView)
       })
 
-      containerView.addSubview(fromView)
+      // containerView.addSubview(fromView)
       containerView.addSubview(toView)
     }
   }

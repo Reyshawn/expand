@@ -78,33 +78,29 @@ class PresentFirstViewController: UIViewController {
 
 // Transitioning
 
-// extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
-//   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//     let interactionController = ShrinkInteractionController(vc: presented)
-//     shrinkAnimator = ShrinkAnimator(interactionController: interactionController)
-//     return shrinkAnimator
-//   }
-// 
-//   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//     shrinkAnimator?.forDismissed = true
-// 
-//     return shrinkAnimator
-//   }
-// 
-//   func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//     guard let animator = animator as? ShrinkAnimator,
-//           let interactionController = animator.interactionController,
-//           interactionController.interactionInProgress
-//     else {
-//       return nil
-//     }
-//     return interactionController
-//   }
-// }
-
-
-
 extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    let interactionController = ShrinkInteractionController(vc: presented)
+    shrinkAnimator = ShrinkAnimator(interactionController: interactionController)
+    return shrinkAnimator
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    shrinkAnimator?.forDismissed = true
+    
+    return shrinkAnimator
+  }
+  
+  func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    guard let animator = animator as? ShrinkAnimator,
+          let interactionController = animator.interactionController,
+          interactionController.interactionInProgress
+    else {
+      return nil
+    }
+    return interactionController
+  }
+  
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
     
     
@@ -113,3 +109,4 @@ extension PresentFirstViewController: UIViewControllerTransitioningDelegate {
     return PageSheetPresentationController(initialSize: screenSize, presented: presented, presenting: presenting)
   }
 }
+
