@@ -128,9 +128,34 @@ extension TimelineViewController: UICollectionViewDelegate {
       return
     }
     let item = dataSource.itemIdentifier(for: indexPath)!
-    
+
+    // Animate cell size change on selection: refer to https://stackoverflow.com/questions/13780153/uicollectionview-animate-cell-size-change-on-selection
+    // Solution 1: Perform batch updates to animate cell size change
+    // item.isExpanded = !item.isExpanded
+    // cell.configure(item.title, isExpanded: item.isExpanded)
+    // collectionView.performBatchUpdates {
+    //
+    // }
+
+    // Solution 2: Invalidate layout and animate with UIView
+    // item.isExpanded = !item.isExpanded
+    // cell.configure(item.title, isExpanded: item.isExpanded)
+    // collectionView.collectionViewLayout.invalidateLayout()
+    //
+    // UIView.animate(
+    //   withDuration: 0.4,
+    //   delay: 0.0,
+    //   usingSpringWithDamping: 0.5,
+    //   initialSpringVelocity: 0.0,
+    //   options: [.curveEaseInOut],
+    //   animations: {
+    //     self.collectionView.layoutIfNeeded()
+    //   },
+    //   completion: nil
+    // )
+
+    // Use custom expand animation.
     let converted = collectionView.convert(cell.frame, to: expandAnimation.parent)
-    
     expandAnimation.expand(converted) { size in
       let v = TextCell(frame: size)
       v.configure(item.title, isExpanded: false)
